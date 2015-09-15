@@ -3,7 +3,7 @@
 
     <property name = "project.name" value="Paathashala_Biblioteca-master" />
     <property name = "main.name" value = "BibliotecaApplication"/>
-    <property name = "package.name" value="com.twu.biblioteca" />
+    <property name = "package.name" value="com.tw.biblioteca" />
 
     <path id="cobertura.classpath">
         <fileset dir="lib/cobertura-2.1.1">
