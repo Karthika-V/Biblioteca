@@ -8,6 +8,7 @@ public class BibliotecaApplication {
     }
 
     public void start() {
-        System.out.println("Welcome to Biblioteca");
+        ConsoleView consoleView = new ConsoleView();
+        consoleView.display("Welcome to Biblioteca");
     }
 }
