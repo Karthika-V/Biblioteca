@@ -12,4 +12,11 @@ public class BookTest {
 
         assertEquals(true, !(book.toString().isEmpty()));
     }
+
+    @Test
+    public void shouldDisplayBookDetails() {
+        Book book = new Book("Abc", "Def", 1900);
+
+        assertEquals("Abc                     Def                     1900", book.toString());
+    }
 }

@@ -12,5 +12,4 @@ public class LibraryTest {
 
         assertEquals(true, !library.books.isEmpty());
     }
-
 }
