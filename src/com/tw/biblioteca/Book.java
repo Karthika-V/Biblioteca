@@ -1,5 +1,5 @@
 package com.tw.biblioteca;
-
+//Book has a Title, author name and Published year
 public class Book {
 
     private String bookTitle;
