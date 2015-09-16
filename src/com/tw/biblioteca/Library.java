@@ -7,8 +7,8 @@ public class Library {
 
     public ArrayList<Book> books = new ArrayList<Book>();
     public ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
-    private ArrayList<Movie> checkedOutMovies = new ArrayList<Movie>();
+    public ArrayList<Movie> movies = new ArrayList<Movie>();
+    public ArrayList<Movie> checkedOutMovies = new ArrayList<Movie>();
 
     private ConfigMessages configMessages = new ConfigMessages();
 
@@ -59,18 +59,17 @@ public class Library {
             checkedOutBooks.remove(book);
     }
 
-    public void checkOutMovie(String userChoice) {
-        Book userChoiceBook = new Book(userChoice, null, 0);
-        if (!books.contains(userChoiceBook)) {
-            configMessages.displayMessage(configMessages.bookNonAvailabilityMessage);
-        } else {
-            for (Book book : books) {
-                if (book.equals(userChoiceBook)) {
-                    books.remove(book);
-                    checkedOutBooks.add(book);
+    public void checkOutMovie(String movieChoice) {
+        Movie userChoiceMovie = new Movie(movieChoice, 0, null, null);
+        if (movies.contains(userChoiceMovie)) {
+            for (Movie movie : movies) {
+                if (movie.equals(userChoiceMovie)) {
+                    movies.remove(movie);
+                    checkedOutMovies.add(movie);
                     configMessages.displayMessage(configMessages.bookCheckOutMessage);
                 }
             }
+
         }
     }
 }

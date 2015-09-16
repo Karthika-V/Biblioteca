@@ -17,24 +17,28 @@ public class MenuOptions {
         optionsList.add("2:Check Out Book");
         optionsList.add("3:Return Book");
         optionsList.add("4:List Movies");
+        optionsList.add("5:Check Out Movie");
         optionsList.add("q:QUIT");
     }
 
     public void optionHandler(String option) {
         if (option.contentEquals("1")) {
             consoleView.bookListView(library.books);
-        }else if (option.contentEquals("q")) {
+        } else if (option.contentEquals("q")) {
             System.exit(0);
-        }else if (option.contentEquals("2")) {
+        } else if (option.contentEquals("2")) {
             consoleView.display("Enter the book name:");
             library.checkOutBook(in.nextLine());
-        }else if (option.contentEquals("3")) {
+        } else if (option.contentEquals("3")) {
             consoleView.display("Enter the book name:");
             library.checkInBook(library.returnBook(in.nextLine()));
-        }
-        else
+        } else if (option.contentEquals("4")) {
+            consoleView.moviesListView(library.movies);
+        } else if (option.contentEquals("5")) {
+            consoleView.display("Enter the movie name:");
+            library.checkOutMovie(in.nextLine());
+        } else
             System.out.println("Select a valid option!");
-
     }
 
     @Override

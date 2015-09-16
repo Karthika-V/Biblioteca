@@ -47,4 +47,16 @@ public class ConsoleView {
         }
         display(stringBuilder.toString());
     }
+
+    public void moviesListView(ArrayList<Movie> movies) {
+        display("List of Movies:");
+        String[] columns = new String[]{"Name", "Year of Release", "Director", "Rating"};
+        listView(columns);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Movie movie : movies) {
+            stringBuilder.append(movie.toString());
+            stringBuilder.append("\n");
+        }
+        display(stringBuilder.toString());
+    }
 }
