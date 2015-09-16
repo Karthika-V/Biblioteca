@@ -27,4 +27,11 @@ public class BookTest {
         assertNotEquals(book, null);
     }
 
+    @Test
+    public void shouldBeEqualToItself() {
+        Book book = new Book("Abc", "Def", 1900);
+
+        assertEquals(book, book);
+    }
+
 }
