@@ -1,7 +1,7 @@
 package com.tw.biblioteca;
 
 import java.util.HashMap;
-
+//Authenticator authenticates user credentials
 public class Authenticator {
 
     private HashMap<String, String> credentials = new HashMap();
