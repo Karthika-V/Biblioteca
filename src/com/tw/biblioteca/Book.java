@@ -24,4 +24,9 @@ public class Book {
         Book book = (Book) that;
         return bookTitle.equals(book.bookTitle);
     }
+
+    @Override
+    public int hashCode() {
+        return bookTitle.hashCode();
+    }
 }

@@ -49,4 +49,20 @@ public class BookTest {
         assertNotEquals(book, "some string");
     }
 
+    @Test
+    public void shouldHaveSameHashCodeForSameBookTitle() {
+        Book book1 = new Book("Abc", "Def", 1900);
+        Book book2 = new Book("Abc", "Xyz", 2000);
+
+        assertEquals(book1.hashCode(), book2.hashCode());
+    }
+
+    @Test
+    public void shouldHaveDifferentHashCodeForDifferentBookTitle() {
+        Book book1 = new Book("Abc", "Def", 1900);
+        Book book2 = new Book("Xyz", "Def", 1900);
+
+        assertNotEquals(book1.hashCode(), book2.hashCode());
+    }
+
 }
