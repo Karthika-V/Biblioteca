@@ -20,7 +20,8 @@ public class MenuOptions {
             consoleView.bookListView(library.books);
         }else if (option.contentEquals("q")) {
             System.exit(0);
-        }
+        }else
+            System.out.println("Select a valid option!");
 
     }
 

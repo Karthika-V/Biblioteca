@@ -66,4 +66,13 @@ public class MenuOptionsTest {
         exit.expectSystemExitWithStatus(0);
         System.exit(0);
     }
+
+    @Test
+    public void shouldShowInvalidOptionsWhenUserEntersSomeInvalidInput() {
+        MenuOptions menuOptions = new MenuOptions();
+
+        menuOptions.optionHandler("*");
+
+        assertEquals("Select a valid option!\n", outContent.toString());
+    }
 }
