@@ -11,5 +11,6 @@ public class BibliotecaApplication {
     public void start() {
         ConsoleView consoleView = new ConsoleView();
         consoleView.display("Welcome to Biblioteca");
+        consoleView.menuView();
     }
 }

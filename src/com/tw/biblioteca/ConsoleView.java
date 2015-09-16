@@ -21,6 +21,14 @@ public class ConsoleView {
         System.out.println(stringBuilder.toString());
     }
 
+    public void menuView() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Hi User!!!\nYou have the following Options:\nChoose One\n");
+        MenuOptions menuOptions = new MenuOptions();
+        stringBuilder.append(menuOptions.toString());
+        System.out.println(stringBuilder.toString());
+    }
+
     public void bookListView(ArrayList<Book> books) {
         display("List Of Books:");
         String[] columns = new String[]{"Title", "Author", "Published year"};
