@@ -22,7 +22,7 @@ public class ConfigMessagesTest {
         ConfigMessages configMessages = new ConfigMessages();
         configMessages.displayMessage("Any Message");
 
-        assertEquals("Any Message",outContent.toString());
+        assertEquals("Any Message\n",outContent.toString());
     }
 
 }

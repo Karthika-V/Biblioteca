@@ -35,12 +35,11 @@ public class MenuOptionsTest {
         MenuOptions menuOptions = new MenuOptions();
         menuOptions.toString();
 
-        assertEquals("1:List Books\n", menuOptions.toString());
+        assertEquals("1:List Books\n2:Check Out Book\n3:Return Book\n4:List Movies\n5:Check Out Movie\nq:QUIT\n", menuOptions.toString());
     }
 
     @Test
     public void shouldCallBookListWhenUserChoiceIsOne() {
-        Library library = new Library();
         MenuOptions menuOptions = new MenuOptions();
         menuOptions.optionHandler("1");
 

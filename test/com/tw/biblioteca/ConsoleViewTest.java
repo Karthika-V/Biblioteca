@@ -55,11 +55,4 @@ public class ConsoleViewTest {
 
     }
 
-    @Test
-    public void shouldTakeInputFromUser() {
-        ByteArrayInputStream inputContent = new ByteArrayInputStream("1".getBytes());
-        System.setIn(inputContent);
-        assertEquals("1", consoleView.inputFromUser());
-    }
-
 }
