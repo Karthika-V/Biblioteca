@@ -40,4 +40,19 @@ public class LibraryTest {
                 "]\n", outContent.toString());
     }
 
+    @Test
+    public void shouldHaveACheckOutWhenUserChoosesABookAvailableInLibrary() {
+        Library library = new Library();
+        library.checkOutBook("Harry Potter");
+
+        assertEquals("Thank You! Enjoy the Book\n", outContent.toString());
+    }
+
+    @Test
+    public void shouldHaveUnsuccessfulCheckOutWhenUserChoosesAnUnavailableBookInLibrary() {
+        Library library = new Library();
+        library.checkOutBook("Abcd");
+        assertEquals("That book is not available\n", outContent.toString());
+    }
+
 }
