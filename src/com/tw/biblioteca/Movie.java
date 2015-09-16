@@ -28,4 +28,17 @@ public class Movie {
     public String toString() {
         return (String.format("%-23s %-23s %-23s %-23s", this.name, this.releaseYear, this.director, isValidRating(this.rating)));
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
+        Movie movie = (Movie) that;
+        return name.equals(movie.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
