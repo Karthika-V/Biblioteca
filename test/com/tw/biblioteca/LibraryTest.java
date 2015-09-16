@@ -72,4 +72,12 @@ public class LibraryTest {
         assertEquals("That is not a Valid Book to Return\n", outContent.toString());
     }
 
+    @Test
+    public void shouldHaveACheckOutWhenUserChoosesAMovieAvailableInLibrary() {
+        Library library = new Library();
+        library.checkOutMovie("Roja");
+
+        assertEquals("Thank You! Enjoy the Movie\n", outContent.toString());
+    }
+
 }

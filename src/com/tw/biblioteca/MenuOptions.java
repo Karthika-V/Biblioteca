@@ -16,6 +16,7 @@ public class MenuOptions {
         optionsList.add("1:List Books");
         optionsList.add("2:Check Out Book");
         optionsList.add("3:Return Book");
+        optionsList.add("4:List Movies");
         optionsList.add("q:QUIT");
     }
 
