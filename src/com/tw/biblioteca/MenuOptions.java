@@ -12,12 +12,16 @@ public class MenuOptions {
     public MenuOptions() {
         optionsList = new ArrayList<String>();
         optionsList.add("1:List Books");
+        optionsList.add("q:QUIT");
     }
 
     public void optionHandler(String option) {
         if (option.contentEquals("1")) {
             consoleView.bookListView(library.books);
+        }else if (option.contentEquals("q")) {
+
         }
+
     }
 
     @Override
