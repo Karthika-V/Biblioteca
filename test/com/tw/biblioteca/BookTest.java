@@ -42,4 +42,11 @@ public class BookTest {
         assertEquals(book1, book2);
     }
 
+    @Test
+    public void shouldNotBeEqualToAnotherType() {
+        Book book = new Book("Abc", "Def", 1900);
+
+        assertNotEquals(book, "some string");
+    }
+
 }
