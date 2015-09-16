@@ -12,4 +12,10 @@ public class Authenticator {
         return credentials;
     }
 
+    public void checkCredentials(String inputLibraryNumber, String password) {
+        if(userData().get(inputLibraryNumber).equals(password)) {
+            System.out.println("Login Successful");
+        }
+    }
+
 }
