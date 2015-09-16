@@ -1,14 +1,21 @@
 package com.tw.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-//ConsoleView manages the console output
+//ConsoleView manages the console output and input
 public class ConsoleView {
 
     private String message;
+    private Scanner in = new Scanner(System.in);
 
     public void display(String message) {
         System.out.println(message);
+    }
+
+    public String inputFromUser() {
+        String input = in.nextLine();
+        return input;
     }
 
     private void listView(String[] columns) {

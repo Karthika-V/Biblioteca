@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -52,6 +53,13 @@ public class ConsoleViewTest {
                 "Diary of a Young Girl   Anne frank              1942                   \n" +
                 "\n\n", outContent.toString());
 
+    }
+
+    @Test
+    public void shouldTakeInputFromUser() {
+        ByteArrayInputStream inputContent = new ByteArrayInputStream("1".getBytes());
+        System.setIn(inputContent);
+        assertEquals("1", consoleView.inputFromUser());
     }
 
 }
