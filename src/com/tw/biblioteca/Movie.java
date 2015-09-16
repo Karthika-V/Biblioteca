@@ -23,4 +23,9 @@ public class Movie {
         }
         return "Unrated";
     }
+
+    @Override
+    public String toString() {
+        return (String.format("%-23s %-23s %-23s %-23s", this.name, this.releaseYear, this.director, isValidRating(this.rating)));
+    }
 }
