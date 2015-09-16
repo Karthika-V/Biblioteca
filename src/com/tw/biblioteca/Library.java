@@ -8,7 +8,6 @@ public class Library {
     public ArrayList<Book> books = new ArrayList<Book>();
     public ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
     public ArrayList<Movie> movies = new ArrayList<Movie>();
-    public ArrayList<Movie> checkedOutMovies = new ArrayList<Movie>();
 
     private ConfigMessages configMessages = new ConfigMessages();
 
@@ -65,8 +64,7 @@ public class Library {
             for (Movie movie : movies) {
                 if (movie.equals(userChoiceMovie)) {
                     movies.remove(movie);
-                    checkedOutMovies.add(movie);
-                    configMessages.displayMessage(configMessages.bookCheckOutMessage);
+                    configMessages.displayMessage(configMessages.movieCheckOutMessage);
                 }
             }
 
