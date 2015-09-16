@@ -11,9 +11,11 @@ public class BibliotecaApplication {
     public void start() {
         ConsoleView consoleView = new ConsoleView();
         consoleView.display("Welcome to Biblioteca");
-        consoleView.menuView();
-        String input = consoleView.inputFromUser();
-        MenuOptions menuOptions = new MenuOptions();
-        menuOptions.optionHandler(input);
+        while(true) {
+            consoleView.menuView();
+            String input = consoleView.inputFromUser();
+            MenuOptions menuOptions = new MenuOptions();
+            menuOptions.optionHandler(input);
+        }
     }
 }

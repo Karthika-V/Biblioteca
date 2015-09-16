@@ -19,7 +19,7 @@ public class MenuOptions {
         if (option.contentEquals("1")) {
             consoleView.bookListView(library.books);
         }else if (option.contentEquals("q")) {
-
+            System.exit(0);
         }
 
     }

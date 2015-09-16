@@ -2,16 +2,23 @@ package com.tw.biblioteca;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class MenuOptionsTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Rule
+    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     @Before
     public void setUpStreams() {
@@ -49,4 +56,14 @@ public class MenuOptionsTest {
                 "\n\n", outContent.toString());
     }
 
+    @Test
+    public void shouldQuitFromApplicationtWhenUserChoiceIsQuit() {
+        MenuOptions mockedmenuOptions = mock(MenuOptions.class);
+
+        mockedmenuOptions.optionHandler("q");
+
+        verify(mockedmenuOptions).optionHandler("q");
+        exit.expectSystemExitWithStatus(0);
+        System.exit(0);
+    }
 }
