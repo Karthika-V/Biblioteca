@@ -16,4 +16,12 @@ public class Book {
     public String toString() {
         return (String.format("%-23s %-23s %-23s\n", this.bookTitle, this.bookAuthor, this.publishedYear));
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
+        Book book = (Book) that;
+        return bookTitle.equals(book.bookTitle);
+    }
 }

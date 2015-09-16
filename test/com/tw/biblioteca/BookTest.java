@@ -19,4 +19,12 @@ public class BookTest {
 
         assertEquals("Abc                     Def                     1900                   \n", book.toString());
     }
+
+    @Test
+    public void shouldNotBeNull() {
+        Book book = new Book("Abc", "Def", 1900);
+
+        assertNotEquals(book, null);
+    }
+
 }
