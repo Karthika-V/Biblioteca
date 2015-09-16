@@ -14,4 +14,12 @@ public class MenuOptionsTest {
         menuOptions.toString();
         assertEquals("1:List Books\n", menuOptions.toString());
     }
+
+    @Test
+    public void shouldCallBookListWhenUserChoiceIsOne() {
+        Library mockedbookList = mock(Library.class);
+        mockedbookList.displayLibraryBooks();
+        verify(mockedbookList).displayLibraryBooks();
+    }
+
 }
