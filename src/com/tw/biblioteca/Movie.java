@@ -14,4 +14,13 @@ public class Movie {
         this.director = director;
         this.rating = rating;
     }
+
+    public String isValidRating(String rating) {
+        int ratingNumber = Integer.parseInt(rating);
+        if ( ratingNumber > 0 && ratingNumber < 10) {
+            this.rating = rating;
+            return this.rating;
+        }
+        return "Unrated";
+    }
 }
