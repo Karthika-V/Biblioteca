@@ -34,4 +34,12 @@ public class BookTest {
         assertEquals(book, book);
     }
 
+    @Test
+    public void shouldBeEqualToOtherInstanceOfSameClass() {
+        Book book1 = new Book("Abc", "Def", 1900);
+        Book book2 = new Book("Abc", "Def", 1900);
+
+        assertEquals(book1, book2);
+    }
+
 }
