@@ -13,4 +13,18 @@ public class Users {
         this.userMail = userMail;
         this.userPhone = userPhone;
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if (this == that) return true;
+        if (that == null || getClass() != that.getClass()) return false;
+        Users users = (Users) that;
+        if (!userName.equals(users.userName)) return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return userName.hashCode();
+    }
 }
