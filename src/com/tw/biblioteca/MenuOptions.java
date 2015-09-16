@@ -9,6 +9,7 @@ public class MenuOptions {
     private ArrayList<String> optionsList;
     private Library library = new Library();
     private ConsoleView consoleView = new ConsoleView();
+    private Login login = new Login();
     private Scanner in = new Scanner(System.in);
 
     public MenuOptions() {
@@ -18,6 +19,7 @@ public class MenuOptions {
         optionsList.add("3:Return Book");
         optionsList.add("4:List Movies");
         optionsList.add("5:Check Out Movie");
+        optionsList.add("6:Login");
         optionsList.add("q:QUIT");
     }
 
@@ -37,6 +39,8 @@ public class MenuOptions {
         } else if (option.contentEquals("5")) {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());
+        } else if (option.contentEquals("6")) {
+            login.loginOperation();
         } else
             System.out.println("Select a valid option!");
     }
