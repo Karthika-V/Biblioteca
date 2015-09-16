@@ -55,4 +55,21 @@ public class LibraryTest {
         assertEquals("That book is not available\n", outContent.toString());
     }
 
+    @Test
+    public void shouldHaveAReturnBookOptionWhenUserChoosesReturnFromMenuWhichWasCheckedOutBefore() {
+        Library library = new Library();
+        library.checkOutBook("Harry Potter");
+        library.checkInBook(library.returnBook("Harry Potter"));
+
+        assertEquals("Thank You! Enjoy the Book\nThank You for Returning Book\n", outContent.toString());
+    }
+
+    @Test
+    public void shouldHaveUnsuccessfulReturnWhenUserChoosesABookWhichIsNotCheckedOutFromLibrary() {
+        Library library = new Library();
+        library.returnBook("Abcd");
+
+        assertEquals("That is not a Valid Book to Return\n", outContent.toString());
+    }
+
 }

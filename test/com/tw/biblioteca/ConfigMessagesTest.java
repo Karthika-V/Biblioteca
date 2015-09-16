@@ -11,7 +11,6 @@ import static org.junit.Assert.*;
 public class ConfigMessagesTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private ConsoleView consoleView = new ConsoleView();
 
     @Before
     public void setUpStreams() {

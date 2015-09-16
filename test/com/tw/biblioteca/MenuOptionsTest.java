@@ -75,4 +75,23 @@ public class MenuOptionsTest {
 
         assertEquals("Select a valid option!\n", outContent.toString());
     }
+
+    @Test
+    public void shouldHaveAnOptionToCheckOutABook() {
+        MenuOptions mockedmenuOptions = mock(MenuOptions.class);
+
+        mockedmenuOptions.optionHandler("2");
+
+        verify(mockedmenuOptions).optionHandler("2");
+    }
+
+    @Test
+    public void shouldHaveAnOptionToReturnABook() {
+        MenuOptions mockedmenuOptions = mock(MenuOptions.class);
+
+        mockedmenuOptions.optionHandler("3");
+
+        verify(mockedmenuOptions).optionHandler("3");
+    }
+
 }

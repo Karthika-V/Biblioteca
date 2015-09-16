@@ -32,4 +32,24 @@ public class Library {
             }
         }
     }
+
+    public Book returnBook(String bookChoice) {
+        Book userChoiceBook = new Book(bookChoice, null, 0);
+        if (checkedOutBooks.contains(userChoiceBook)) {
+            for (Book book : checkedOutBooks) {
+                if (book.equals(userChoiceBook)) {
+                    books.add(book);
+                    configMessages.displayMessage(configMessages.bookReturnMessage);
+                    return book;
+                }
+            }
+        } else {
+            configMessages.displayMessage(configMessages.invalidBookMessage);
+        }return userChoiceBook;
+    }
+
+    public void checkInBook(Book book) {
+        if (checkedOutBooks.contains(book) && books.contains(book))
+            checkedOutBooks.remove(book);
+    }
 }
