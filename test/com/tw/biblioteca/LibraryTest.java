@@ -27,7 +27,7 @@ public class LibraryTest {
     public void shouldHaveAListOfBooks() {
         Library library = new Library();
 
-        assertEquals(true, !library.books.isEmpty());
+        assertEquals(true, !library.displayLibraryBooks().isEmpty());
     }
 
     @Test

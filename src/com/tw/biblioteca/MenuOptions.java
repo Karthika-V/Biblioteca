@@ -25,7 +25,7 @@ public class MenuOptions {
 
     public void optionHandler(String option) {
         if (option.contentEquals("1")) {
-            consoleView.bookListView(library.books);
+            consoleView.bookListView(library.displayLibraryBooks());
         } else if (option.contentEquals("q")) {
             System.exit(0);
         } else if (option.contentEquals("2")) {
@@ -35,7 +35,7 @@ public class MenuOptions {
             consoleView.display("Enter the book name:");
             library.checkInBook(library.returnBook(in.nextLine()));
         } else if (option.contentEquals("4")) {
-            consoleView.moviesListView(library.movies);
+            consoleView.moviesListView(library.displayLibraryMovies());
         } else if (option.contentEquals("5")) {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());

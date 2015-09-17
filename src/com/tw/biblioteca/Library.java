@@ -5,9 +5,14 @@ import java.util.ArrayList;
 //Library has a list of books and does operations:Check out and Returning Book
 public class Library {
 
-    public ArrayList<Book> books = new ArrayList<Book>();
-    public ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
-    public ArrayList<Movie> movies = new ArrayList<Movie>();
+    private ArrayList<Book> books = new ArrayList<Book>();
+    private ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private final String UNKNOWN_AUTHOR = null;
+    private final int UNKNOWN_PUBLISHED_YEAR = 0;
+    private final int UNKNOWN_YEAR_OF_RELEASE = 0;
+    private final String UNKNOWN_DIRECTOR = null;
+    private final String UNRATED = null;
 
     private ConfigMessages configMessages = new ConfigMessages();
 
@@ -19,12 +24,12 @@ public class Library {
         movies.add(new Movie("ABCD", 2015, "XYZ", "7"));
     }
 
-    public void displayLibraryBooks() {
-        System.out.println(books.toString());
+    public ArrayList displayLibraryBooks() {
+        return books;
     }
 
     public void checkOutBook(String userChoice) {
-        Book userChoiceBook = new Book(userChoice, null, 0);
+        Book userChoiceBook = new Book(userChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (!books.contains(userChoiceBook)) {
             configMessages.displayMessage(configMessages.bookNonAvailabilityMessage);
         } else {
@@ -39,7 +44,7 @@ public class Library {
     }
 
     public Book returnBook(String bookChoice) {
-        Book userChoiceBook = new Book(bookChoice, null, 0);
+        Book userChoiceBook = new Book(bookChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (checkedOutBooks.contains(userChoiceBook)) {
             for (Book book : checkedOutBooks) {
                 if (book.equals(userChoiceBook)) {
@@ -50,7 +55,8 @@ public class Library {
             }
         } else {
             configMessages.displayMessage(configMessages.invalidBookMessage);
-        }return userChoiceBook;
+        }
+        return userChoiceBook;
     }
 
     public void checkInBook(Book book) {
@@ -58,8 +64,12 @@ public class Library {
             checkedOutBooks.remove(book);
     }
 
+    public ArrayList displayLibraryMovies() {
+        return movies;
+    }
+
     public void checkOutMovie(String movieChoice) {
-        Movie userChoiceMovie = new Movie(movieChoice, 0, null, null);
+        Movie userChoiceMovie = new Movie(movieChoice, UNKNOWN_YEAR_OF_RELEASE, UNKNOWN_DIRECTOR, UNRATED);
         if (movies.contains(userChoiceMovie)) {
             for (Movie movie : movies) {
                 if (movie.equals(userChoiceMovie)) {
