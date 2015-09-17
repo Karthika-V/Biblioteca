@@ -9,8 +9,10 @@ public class MenuOptions {
     private ArrayList<String> optionsList;
     private Library library = new Library();
     private ConsoleView consoleView = new ConsoleView();
-    private Login login = new Login();
+    private Authenticator authenticator = new Authenticator();
+    private Login login = new Login(authenticator, consoleView);
     private Scanner in = new Scanner(System.in);
+    private User user = new User("","","","","", User.Role.GUEST);
 
     public MenuOptions() {
         optionsList = new ArrayList<String>();
@@ -20,6 +22,9 @@ public class MenuOptions {
         optionsList.add("4:List Movies");
         optionsList.add("5:Check Out Movie");
         optionsList.add("6:Login");
+        optionsList.add("7:User Details");
+        optionsList.add("8:Logout");
+        optionsList.add("9:Checked Out Book Details");
         optionsList.add("q:QUIT");
     }
 
@@ -29,9 +34,13 @@ public class MenuOptions {
         } else if (option.contentEquals("q")) {
             System.exit(0);
         } else if (option.contentEquals("2")) {
+            consoleView.display("Please login to proceed for the selected menu item.");
+            User currentUser = login.loginOperation();
             consoleView.display("Enter the book name:");
             library.checkOutBook(in.nextLine());
         } else if (option.contentEquals("3")) {
+            consoleView.display("Please login to proceed for the selected menu item.");
+            User currentUser = login.loginOperation();
             consoleView.display("Enter the book name:");
             library.checkInBook(library.returnBook(in.nextLine()));
         } else if (option.contentEquals("4")) {
@@ -40,7 +49,10 @@ public class MenuOptions {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());
         } else if (option.contentEquals("6")) {
-            login.loginOperation();
+            User currentUser = login.loginOperation();
+        } else if (option.contentEquals("7")) {
+            User currentUser = login.loginOperation();
+            currentUser.displayUserDetails();
         } else
             System.out.println("Select a valid option!");
     }

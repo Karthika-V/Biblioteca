@@ -1,21 +1,30 @@
+//Authenticator authenticates user credentials
 package com.tw.biblioteca;
 
-import java.util.HashMap;
-//Authenticator authenticates user credentials
+import java.util.ArrayList;
+
 public class Authenticator {
 
-    private HashMap<String, String> credentials = new HashMap();
+    private ArrayList<User> userCredentials = new ArrayList<>();
 
-    public HashMap userData() {
-        credentials.put("123-4567", "qwerty");
-        credentials.put("111-1111", "abcd");
-        return credentials;
+    public ArrayList userData() {
+        userCredentials.add(new User("111-1111", "qwerty", "user1", "Def@xyz.com", "100", User.Role.USER));
+        userCredentials.add(new User("123-4567", "abcd", "user2", "Def@xyz.com", "100", User.Role.LIBRARIAN));
+        return userCredentials;
     }
 
-    public void checkCredentials(String inputLibraryNumber, String password) {
-        if(userData().get(inputLibraryNumber).equals(password)) {
-            System.out.println("Login Successful");
+    public User checkCredentials(String inputLibraryNumber, String password) {
+        User currentUser = new User(inputLibraryNumber, password, "", "", "", User.Role.GUEST);
+        if (userCredentials.contains(currentUser)) {
+            for (User user : userCredentials) {
+                if (user.equals(currentUser)) {
+                    if (user.checkPassword(currentUser)) {
+                        return user;
+                    }
+
+                }
+            }
         }
+        return currentUser;
     }
-
 }

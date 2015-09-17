@@ -5,25 +5,24 @@ import java.util.Scanner;
 //Logs in valid user with user number and password
 public class Login {
 
-    Scanner in = new Scanner(System.in);
-    private String inputLibraryNumber;
-    private String password;
-    Authenticator authenticator = new Authenticator();
-    ConsoleView consoleView = new ConsoleView();
+    private Scanner in = new Scanner(System.in);
+    private Authenticator authenticator;
+    private ConsoleView consoleView;
 
-    public void loginOperation() {
+    public Login(Authenticator authenticator, ConsoleView consoleView)
+    {
+        this.authenticator = authenticator;
+        this.consoleView = consoleView;
+    }
+
+    public User loginOperation() {
         consoleView.display("LOGIN");
         consoleView.display("User Library Number:");
-        inputLibraryNumber = in.nextLine();
+        String inputLibraryNumber = in.nextLine();
         consoleView.display("Password:");
-        password = in.nextLine();
-        if (isValidLibraryNumber(inputLibraryNumber)) {
-            authenticator.checkCredentials(inputLibraryNumber, password);
-        }
+        String password = in.nextLine();
+        return authenticator.checkCredentials(inputLibraryNumber, password);
     }
 
-    public boolean isValidLibraryNumber(String number) {
-        String[] tokens = number.split("-");
-        return (tokens[0].length() == 3 && tokens[1].length() == 4);
-    }
+
 }

@@ -30,16 +30,20 @@ public class LoginTest {
 
     @Test
     public void shouldCheckForTheValidityForAProperlyFormattedLibraryNumber() {
-        Login login = new Login();
+        ConsoleView consoleView = new ConsoleView();
+        Authenticator authenticator = new Authenticator();
+        Login login = new Login(authenticator, consoleView);
 
         assertEquals(true, login.isValidLibraryNumber("131-1441"));
     }
 
     @Test
     public void shouldCheckForTheValidityForAImproperlyFormattedLibraryNumber() {
-        Login loginOption = new Login();
+        ConsoleView consoleView = new ConsoleView();
+        Authenticator authenticator = new Authenticator();
+        Login login = new Login(authenticator, consoleView);
 
-        assertEquals(false, loginOption.isValidLibraryNumber("1311-441"));
+        assertEquals(false, login.isValidLibraryNumber("1311-441"));
     }
 
     @Test
@@ -53,9 +57,10 @@ public class LoginTest {
         ByteArrayInputStream inContent2 = new ByteArrayInputStream(input2.getBytes());
         System.setIn(inContent2);
 
-        Login loginOption = new Login();
-        loginOption.isValidLibraryNumber(input1);
+        ConsoleView consoleView = new ConsoleView();
         Authenticator authenticator = new Authenticator();
+        Login login = new Login(authenticator, consoleView);
+        login.isValidLibraryNumber(input1);
         authenticator.checkCredentials(input1, input2);
 
         assertEquals("Login Successful\n", outContent.toString());
