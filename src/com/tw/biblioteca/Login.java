@@ -24,9 +24,6 @@ public class Login {
 
     public boolean isValidLibraryNumber(String number) {
         String[] tokens = number.split("-");
-        if (tokens[0].length() == 3 && tokens[1].length() == 4) {
-            return true;
-        }
-        return false;
+        return (tokens[0].length() == 3 && tokens[1].length() == 4);
     }
 }

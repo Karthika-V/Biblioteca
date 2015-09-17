@@ -1,20 +1,21 @@
 package com.tw.biblioteca;
 
-//Biblioteca Application launches the application
+//Biblioteca Application displays welcome message and menu for the user
 public class BibliotecaApplication {
+
+    private ConsoleView consoleView = new ConsoleView();
+    private MenuOptions menuOptions = new MenuOptions();
 
     public static void main(String[] args) {
         BibliotecaApplication bibliotecaApplication = new BibliotecaApplication();
         bibliotecaApplication.start();
     }
 
-    public void start() {
-        ConsoleView consoleView = new ConsoleView();
+    private void start() {
         consoleView.display("Welcome to Biblioteca");
-        while(true) {
+        while (true) {
             consoleView.menuView();
             String input = consoleView.inputFromUser();
-            MenuOptions menuOptions = new MenuOptions();
             menuOptions.optionHandler(input);
         }
     }
