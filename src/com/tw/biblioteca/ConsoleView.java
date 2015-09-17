@@ -6,7 +6,6 @@ import java.util.Scanner;
 //ConsoleView manages the console output and input
 public class ConsoleView {
 
-    private String message;
     private Scanner in = new Scanner(System.in);
 
     public void display(String message) {
@@ -14,11 +13,10 @@ public class ConsoleView {
     }
 
     public String inputFromUser() {
-        String input = in.nextLine();
-        return input;
+        return in.nextLine();
     }
 
-    private void listView(String[] columns) {
+    private void list(String[] columns) {
         String divider = "\n--------------------------------------------------------------------------------\n";
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(divider);
@@ -28,7 +26,7 @@ public class ConsoleView {
         System.out.println(stringBuilder.toString());
     }
 
-    public void menuView() {
+    public void menu() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Hi User!!!\nYou have the following Options:\nChoose One\n");
         MenuOptions menuOptions = new MenuOptions();
@@ -36,10 +34,10 @@ public class ConsoleView {
         System.out.println(stringBuilder.toString());
     }
 
-    public void bookListView(ArrayList<Book> books) {
+    public void bookList(ArrayList<Book> books) {
         display("List Of Books:");
         String[] columns = new String[]{"Title", "Author", "Published year"};
-        listView(columns);
+        list(columns);
         StringBuilder stringBuilder = new StringBuilder();
         for (Book book : books) {
             stringBuilder.append(book.toString());
@@ -48,10 +46,10 @@ public class ConsoleView {
         display(stringBuilder.toString());
     }
 
-    public void moviesListView(ArrayList<Movie> movies) {
+    public void moviesList(ArrayList<Movie> movies) {
         display("List of Movies:");
         String[] columns = new String[]{"Name", "Year of Release", "Director", "Rating"};
-        listView(columns);
+        list(columns);
         StringBuilder stringBuilder = new StringBuilder();
         for (Movie movie : movies) {
             stringBuilder.append(movie.toString());

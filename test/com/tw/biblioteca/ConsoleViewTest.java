@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class ConsoleViewTest {
         books.add(new Book("Harry Potter", "J.K.Rowling", 2000));
         books.add(new Book("Diary of a Young Girl", "Anne frank", 1942));
 
-        consoleView.bookListView(books);
+        consoleView.bookList(books);
 
         assertEquals("List Of Books:\n" +
                 "\n" +

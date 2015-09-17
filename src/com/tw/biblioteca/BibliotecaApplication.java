@@ -14,7 +14,7 @@ public class BibliotecaApplication {
     private void start() {
         consoleView.display("\nWelcome to Biblioteca\n");
         while (true) {
-            consoleView.menuView();
+            consoleView.menu();
             menuOptions.optionHandler(consoleView.inputFromUser());
         }
     }
