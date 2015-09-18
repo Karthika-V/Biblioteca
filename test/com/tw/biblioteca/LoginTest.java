@@ -28,23 +28,6 @@ public class LoginTest {
         Mockito.verify(authenticator, times(1)).checkCredentials(input1, input2);
     }
 
-    @Test
-    public void shouldCheckForTheValidityForAProperlyFormattedLibraryNumber() {
-        ConsoleView consoleView = new ConsoleView();
-        Authenticator authenticator = new Authenticator();
-        Login login = new Login(authenticator, consoleView);
-
-        assertEquals(true, login.isValidLibraryNumber("131-1441"));
-    }
-
-    @Test
-    public void shouldCheckForTheValidityForAImproperlyFormattedLibraryNumber() {
-        ConsoleView consoleView = new ConsoleView();
-        Authenticator authenticator = new Authenticator();
-        Login login = new Login(authenticator, consoleView);
-
-        assertEquals(false, login.isValidLibraryNumber("1311-441"));
-    }
 
     @Test
     public void shouldCallAuthenticatorWhenALibraryNumberIsValid() {
@@ -60,7 +43,6 @@ public class LoginTest {
         ConsoleView consoleView = new ConsoleView();
         Authenticator authenticator = new Authenticator();
         Login login = new Login(authenticator, consoleView);
-        login.isValidLibraryNumber(input1);
         authenticator.checkCredentials(input1, input2);
 
         assertEquals("Login Successful\n", outContent.toString());
