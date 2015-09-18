@@ -1,54 +1,46 @@
 package com.tw.biblioteca;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
-//Menu gives a list of options to the user and handles the option
+//MenuOptions gives a list of options to the user and handles the option
 public class MenuOptions {
 
-    private ArrayList<String> optionsList;
-    private Library library = new Library();
-    private ConsoleView consoleView = new ConsoleView();
-    private Authenticator authenticator = new Authenticator();
-    private Login login = new Login(authenticator, consoleView);
+    private Library library;
+    private ConsoleView consoleView;
+    private Authenticator authenticator;
+    private Login login;
     private Scanner in = new Scanner(System.in);
-    private User user = new User("","","","","", User.Role.GUEST);
-    private Session session = new Session(user);
+    private Session session;
+    private User user;
 
-    public MenuOptions() {
-        optionsList = new ArrayList<String>();
-        optionsList.add("1:List Books");
-        optionsList.add("2:Check Out Book");
-        optionsList.add("3:Return Book");
-        optionsList.add("4:List Movies");
-        optionsList.add("5:Check Out Movie");
-        optionsList.add("6:Login");
-        optionsList.add("7:User Details");
-        optionsList.add("8:Logout");
-        optionsList.add("9:Checked Out Book Details");
-        optionsList.add("q:QUIT");
+    public MenuOptions(Library library, ConsoleView consoleView, Authenticator authenticator, Login login, Session session, User user) {
+        this.library = library;
+        this.consoleView = consoleView;
+        this.authenticator = authenticator;
+        this.login = login;
+        this.session = session;
+        this.user = user;
     }
 
     public void optionHandler(String option) {
         if (option.contentEquals("1")) {
-            consoleView.bookList(library.displayLibraryBooks());
+            consoleView.bookList(library.books());
         } else if (option.contentEquals("q")) {
             System.exit(0);
         } else if (option.contentEquals("2") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
-            library.checkOutBook(in.nextLine());
+            library.checkOutBook(in.nextLine(), sessionCheckUser());
         } else if (option.contentEquals("3") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
-            library.checkInBook(library.returnBook(in.nextLine()));
+            library.checkInBook(library.returnBook(in.nextLine(), sessionCheckUser()));
         } else if (option.contentEquals("4")) {
-            consoleView.moviesList(library.displayLibraryMovies());
+            consoleView.moviesList(library.movies());
         } else if (option.contentEquals("5")) {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());
         } else if (option.contentEquals("6")) {
             login.loginOperation();
         } else if (option.contentEquals("7")) {
-            login.loginOperation();
             sessionCheckUser().displayUserDetails();
         } else
             System.out.println("Select a valid option!");
@@ -59,16 +51,7 @@ public class MenuOptions {
     }
 
     private User sessionCheckUser() {
-        if(session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN));
+       if (session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN)) ;
         return user;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < optionsList.size(); i++) {
-            stringBuilder.append(optionsList.get(i) + "\n");
-        }
-        return stringBuilder.toString();
     }
 }

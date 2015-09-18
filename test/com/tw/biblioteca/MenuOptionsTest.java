@@ -8,6 +8,7 @@ import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -16,6 +17,15 @@ import static org.mockito.Mockito.verify;
 public class MenuOptionsTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private Library library = new Library();
+    private ConsoleView consoleView = new ConsoleView();
+    private Authenticator authenticator = new Authenticator();
+    private Scanner in = new Scanner(System.in);
+    private User user = new User("111-1111","abcd", "Abc", "Def@xyz.com", "100", User.Role.USER);;
+    private Session session = new Session(user);
+    private Login login = new Login(authenticator, consoleView, user, session);
+
+    MenuOptions menuOptions = new MenuOptions(library, consoleView, authenticator, login, session, user);
 
     @Rule
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
@@ -30,17 +40,9 @@ public class MenuOptionsTest {
         System.setOut(null);
     }
 
-    @Test
-    public void shouldListOutMenuForUser() {
-        MenuOptions menuOptions = new MenuOptions();
-        menuOptions.toString();
-
-        assertEquals("1:List Books\n2:Check Out Book\n3:Return Book\n4:List Movies\n5:Check Out Movie\n6:Login\nq:QUIT\n", menuOptions.toString());
-    }
 
     @Test
     public void shouldCallBookListWhenUserChoiceIsOne() {
-        MenuOptions menuOptions = new MenuOptions();
         menuOptions.optionHandler("1");
 
         assertEquals("List Of Books:\n" +
@@ -68,7 +70,6 @@ public class MenuOptionsTest {
 
     @Test
     public void shouldShowInvalidOptionsWhenUserEntersSomeInvalidInput() {
-        MenuOptions menuOptions = new MenuOptions();
 
         menuOptions.optionHandler("*");
 

@@ -26,7 +26,7 @@ public class ConsoleView {
         System.out.println(stringBuilder.toString());
     }
 
-    public void menu(ArrayList menuOptions) {
+    public void menu(ArrayList<String> menuOptions) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Hi User!!!\nYou have the following Options:\nChoose One\n");
         for (int i = 0; i < menuOptions.size(); i++) {

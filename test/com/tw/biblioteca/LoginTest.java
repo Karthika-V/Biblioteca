@@ -42,7 +42,9 @@ public class LoginTest {
 
         ConsoleView consoleView = new ConsoleView();
         Authenticator authenticator = new Authenticator();
-        Login login = new Login(authenticator, consoleView);
+        User user = new User("111-1111","abcd", "Abc", "Def@xyz.com", "100", User.Role.USER);
+        Session session = new Session(user);
+        Login login = new Login(authenticator, consoleView, user, session);
         authenticator.checkCredentials(input1, input2);
 
         assertEquals("Login Successful\n", outContent.toString());

@@ -24,11 +24,11 @@ public class Library {
         movies.add(new Movie("ABCD", 2015, "XYZ", "7"));
     }
 
-    public ArrayList displayLibraryBooks() {
+    public ArrayList books() {
         return books;
     }
 
-    public void checkOutBook(String userChoice) {
+    public void checkOutBook(String userChoice, User user) {
         Book userChoiceBook = new Book(userChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (!books.contains(userChoiceBook)) {
             configMessages.displayMessage(configMessages.bookNonAvailabilityMessage);
@@ -43,7 +43,7 @@ public class Library {
         }
     }
 
-    public Book returnBook(String bookChoice) {
+    public Book returnBook(String bookChoice, User user) {
         Book userChoiceBook = new Book(bookChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (checkedOutBooks.contains(userChoiceBook)) {
             for (Book book : checkedOutBooks) {
@@ -64,7 +64,7 @@ public class Library {
             checkedOutBooks.remove(book);
     }
 
-    public ArrayList displayLibraryMovies() {
+    public ArrayList movies() {
         return movies;
     }
 

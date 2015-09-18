@@ -10,11 +10,15 @@ public class BibliotecaApplication {
     }
 
     private void run() {
+        Library library = new Library();
         ConsoleView consoleView = new ConsoleView();
-        MenuOptions menuOptions = new MenuOptions();
-        MenuFactory menuFactory = new MenuFactory();
+        Authenticator authenticator = new Authenticator();
         User user = new User("", "", "", "", "", User.Role.GUEST);
         Session session = new Session(user);
+        Login login = new Login(authenticator, consoleView, user,session);
+        MenuOptions menuOptions = new MenuOptions(library, consoleView, authenticator, login, session, user);
+        MenuFactory menuFactory = new MenuFactory();
+
         Biblioteca biblioteca = new Biblioteca(consoleView, menuOptions, session, menuFactory);
         biblioteca.start();
     }
