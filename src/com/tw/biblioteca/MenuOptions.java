@@ -40,6 +40,9 @@ public class MenuOptions {
             session.setUser(login.loginOperation());
         } else if (option.contentEquals("7")) {
             consoleView.display(session.getUser().displayUserDetails());
+        } else if (option.contentEquals("8")) {
+            User user = new User("", "", "", "", "", User.Role.GUEST);
+            session.setUser(user);
         } else
             System.out.println("Select a valid option!");
     }
@@ -49,7 +52,8 @@ public class MenuOptions {
     }
 
     private User sessionCheckUser() {
-       if (session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN)) ;
+        if (session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN))
+            ;
         return user;
     }
 }
