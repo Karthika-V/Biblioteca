@@ -15,7 +15,8 @@ public class BibliotecaApplication {
         ConsoleView consoleView = new ConsoleView();
         MenuOptions menuOptions = new MenuOptions();
         User user = new User("", "", "", "", "", User.Role.GUEST);
-        Biblioteca biblioteca = new Biblioteca(consoleView, menuOptions, user);
+        Session session = new Session(user);
+        Biblioteca biblioteca = new Biblioteca(consoleView, menuOptions, session);
         biblioteca.start();
     }
 }
