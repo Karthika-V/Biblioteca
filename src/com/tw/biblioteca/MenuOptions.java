@@ -13,6 +13,7 @@ public class MenuOptions {
     private Login login = new Login(authenticator, consoleView);
     private Scanner in = new Scanner(System.in);
     private User user = new User("","","","","", User.Role.GUEST);
+    private Session session = new Session(user);
 
     public MenuOptions() {
         optionsList = new ArrayList<String>();
@@ -33,10 +34,10 @@ public class MenuOptions {
             consoleView.bookList(library.displayLibraryBooks());
         } else if (option.contentEquals("q")) {
             System.exit(0);
-        } else if (option.contentEquals("2")) {
+        } else if (option.contentEquals("2") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
             library.checkOutBook(in.nextLine());
-        } else if (option.contentEquals("3")) {
+        } else if (option.contentEquals("3") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
             library.checkInBook(library.returnBook(in.nextLine()));
         } else if (option.contentEquals("4")) {
@@ -47,10 +48,19 @@ public class MenuOptions {
         } else if (option.contentEquals("6")) {
             login.loginOperation();
         } else if (option.contentEquals("7")) {
-            User currentUser = login.loginOperation();
-            currentUser.displayUserDetails();
+            login.loginOperation();
+            sessionCheckUser().displayUserDetails();
         } else
             System.out.println("Select a valid option!");
+    }
+
+    private boolean sessionCheckNotGuest() {
+        return !session.getUser().getRole().equals(User.Role.GUEST);
+    }
+
+    private User sessionCheckUser() {
+        if(session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN));
+        return user;
     }
 
     @Override
