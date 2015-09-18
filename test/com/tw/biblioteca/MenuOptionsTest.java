@@ -25,7 +25,7 @@ public class MenuOptionsTest {
     private Session session = new Session(user);
     private Login login = new Login(authenticator, consoleView, user, session);
 
-    MenuOptions menuOptions = new MenuOptions(library, consoleView, authenticator, login, session, user);
+    MenuOptions menuOptions = new MenuOptions(library, consoleView, login, session, user);
 
     @Rule
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();

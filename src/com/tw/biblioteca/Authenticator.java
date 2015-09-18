@@ -15,15 +15,17 @@ public class Authenticator {
 
     public User checkCredentials(String inputLibraryNumber, String password) {
         User currentUser = new User(inputLibraryNumber, password, "", "", "", User.Role.GUEST);
-        if (userCredentials.contains(currentUser)) {
+        userCredentials = userData();
             for (User user : userCredentials) {
                 if (user.equals(currentUser)) {
                     if (user.checkPassword(currentUser)) {
+                        System.out.println("Logged in Successfully");
                         return user;
                     }
+                    else
+                        System.out.println("Logging Attempt failed");
                 }
             }
-        }
         return currentUser;
     }
 }

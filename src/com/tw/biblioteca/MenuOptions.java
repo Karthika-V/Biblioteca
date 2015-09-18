@@ -7,16 +7,14 @@ public class MenuOptions {
 
     private Library library;
     private ConsoleView consoleView;
-    private Authenticator authenticator;
     private Login login;
     private Scanner in = new Scanner(System.in);
     private Session session;
     private User user;
 
-    public MenuOptions(Library library, ConsoleView consoleView, Authenticator authenticator, Login login, Session session, User user) {
+    public MenuOptions(Library library, ConsoleView consoleView, Login login, Session session, User user) {
         this.library = library;
         this.consoleView = consoleView;
-        this.authenticator = authenticator;
         this.login = login;
         this.session = session;
         this.user = user;
@@ -39,9 +37,9 @@ public class MenuOptions {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());
         } else if (option.contentEquals("6")) {
-            login.loginOperation();
+            session.setUser(login.loginOperation());
         } else if (option.contentEquals("7")) {
-            sessionCheckUser().displayUserDetails();
+            consoleView.display(session.getUser().displayUserDetails());
         } else
             System.out.println("Select a valid option!");
     }

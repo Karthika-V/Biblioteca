@@ -26,7 +26,11 @@ public class User {
     }
 
     public String displayUserDetails() {
-        return (String.format("Library Number:%s\n User Name:%s\n User Mail:%s\n Phone Number:%s\n Role:%s\n", this.userLibraryNumber, this.userName, this.userMail,this.userPhone, this.userRole));
+        return (String.format("Library Number:%s\n" +
+                " User Name:%s\n" +
+                " User Mail:%s\n" +
+                " Phone Number:%s\n" +
+                " Role:%s\n", this.userLibraryNumber, this.userName, this.userMail, this.userPhone, this.userRole ));
     }
 
     public boolean checkPassword(User newUser) {
