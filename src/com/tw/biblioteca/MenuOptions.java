@@ -27,10 +27,10 @@ public class MenuOptions {
             System.exit(0);
         } else if (option.contentEquals("2") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
-            library.checkOutBook(in.nextLine(), sessionCheckUser());
+            library.checkOutBook(in.nextLine(), session.getUser());
         } else if (option.contentEquals("3") && sessionCheckNotGuest()) {
             consoleView.display("Enter the book name:");
-            library.checkInBook(library.returnBook(in.nextLine(), sessionCheckUser()));
+            library.checkInBook(library.returnBook(in.nextLine(), session.getUser()));
         } else if (option.contentEquals("4")) {
             consoleView.moviesList(library.movies());
         } else if (option.contentEquals("5")) {
@@ -43,6 +43,8 @@ public class MenuOptions {
         } else if (option.contentEquals("8")) {
             User user = new User("", "", "", "", "", User.Role.GUEST);
             session.setUser(user);
+        } else if (option.contentEquals("9")) {
+            consoleView.checkedOutBookDetails(library.checkedOutBookDetails());
         } else
             System.out.println("Select a valid option!");
     }
@@ -51,9 +53,4 @@ public class MenuOptions {
         return !session.getUser().getRole().equals(User.Role.GUEST);
     }
 
-    private User sessionCheckUser() {
-        if (session.getUser().getRole().equals(User.Role.USER) || session.getUser().getRole().equals(User.Role.LIBRARIAN))
-            ;
-        return user;
-    }
 }

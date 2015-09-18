@@ -1,6 +1,7 @@
 package com.tw.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //Library has a list of books and does operations:Check out and Returning Book
 public class Library {
@@ -8,6 +9,8 @@ public class Library {
     private ArrayList<Book> books = new ArrayList<Book>();
     private ArrayList<Book> checkedOutBooks = new ArrayList<Book>();
     private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private HashMap<Book, User> checkOutDetails = new HashMap<>();
+
     private final String UNKNOWN_AUTHOR = null;
     private final int UNKNOWN_PUBLISHED_YEAR = 0;
     private final int UNKNOWN_YEAR_OF_RELEASE = 0;
@@ -28,6 +31,10 @@ public class Library {
         return books;
     }
 
+    public HashMap checkedOutBookDetails() {
+        return checkOutDetails;
+    }
+
     public void checkOutBook(String userChoice, User user) {
         Book userChoiceBook = new Book(userChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (!books.contains(userChoiceBook)) {
@@ -35,9 +42,10 @@ public class Library {
         } else {
             for (Book book : books) {
                 if (book.equals(userChoiceBook)) {
-                    books.remove(book);
                     checkedOutBooks.add(book);
+                    checkOutDetails.put(book,user);
                     configMessages.displayMessage(configMessages.bookCheckOutMessage);
+                    books.remove(book);
                 }
             }
         }
@@ -47,10 +55,13 @@ public class Library {
         Book userChoiceBook = new Book(bookChoice, UNKNOWN_AUTHOR, UNKNOWN_PUBLISHED_YEAR);
         if (checkedOutBooks.contains(userChoiceBook)) {
             for (Book book : checkedOutBooks) {
-                if (book.equals(userChoiceBook)) {
+                if (book.equals(userChoiceBook) && user.equals(checkOutDetails.get(book))) {
                     books.add(book);
                     configMessages.displayMessage(configMessages.bookReturnMessage);
                     return book;
+                }
+                else {
+                    configMessages.displayMessage(configMessages.unauthorizedMessage);
                 }
             }
         } else {

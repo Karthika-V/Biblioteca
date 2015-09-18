@@ -14,7 +14,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return (String.format("%-23s %-23s %-23s\n", this.bookTitle, this.bookAuthor, this.publishedYear));
+        return (String.format("\n%-23s %-23s %-23s", this.bookTitle, this.bookAuthor, this.publishedYear));
     }
 
     @Override

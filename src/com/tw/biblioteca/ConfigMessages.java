@@ -8,6 +8,7 @@ public class ConfigMessages {
     public String bookReturnMessage = "Thank You for Returning Book";
     public String invalidBookMessage = "That is not a Valid Book to Return";
     public String movieCheckOutMessage = "Thank You! Enjoy the Movie";
+    public String unauthorizedMessage = "You are not authorized to return book";
 
     public void displayMessage(String message) {
         ConsoleView consoleView = new ConsoleView();
