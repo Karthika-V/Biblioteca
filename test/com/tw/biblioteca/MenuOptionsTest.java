@@ -50,11 +50,11 @@ public class MenuOptionsTest {
                 "--------------------------------------------------------------------------------\n" +
                 "Title                  Author                 Published year         \n" +
                 "--------------------------------------------------------------------------------\n" +
-                "\n" +
+                "\n\n" +
                 "Harry Potter            J.K.Rowling             2000                   \n" +
                 "\n" +
                 "Diary of a Young Girl   Anne frank              1942                   \n" +
-                "\n\n", outContent.toString());
+                "\n", outContent.toString());
     }
 
     @Test

@@ -30,7 +30,7 @@ public class LoginTest {
 
 
     @Test
-    public void shouldCallAuthenticatorWhenALibraryNumberIsValid() {
+    public void shouldCallAuthenticatorWhenALibraryNumberIsInvalid() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         String input1 = "111-1111";
@@ -40,13 +40,9 @@ public class LoginTest {
         ByteArrayInputStream inContent2 = new ByteArrayInputStream(input2.getBytes());
         System.setIn(inContent2);
 
-        ConsoleView consoleView = new ConsoleView();
         Authenticator authenticator = new Authenticator();
-        User user = new User("111-1111","abcd", "Abc", "Def@xyz.com", "100", User.Role.USER);
-        Session session = new Session(user);
-        Login login = new Login(authenticator, consoleView, user, session);
         authenticator.checkCredentials(input1, input2);
 
-        assertEquals("Login Successful\n", outContent.toString());
+        assertEquals("Logging Attempt failed\n", outContent.toString());
     }
 }

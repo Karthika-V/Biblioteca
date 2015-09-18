@@ -52,7 +52,7 @@ public class UserTest {
     @Test
     public void shouldHaveDifferentHashCodeForDifferentUserName() {
         User user1 = new User("111-1111", "abcd", "Abc", "Def@xyz.com", "100", User.Role.USER);
-        User user2 = new User("111-1111", "abcd", "Def", "Def@xyz.com", "100", User.Role.USER);
+        User user2 = new User("222-2222", "abcd", "Def", "Def@xyz.com", "100", User.Role.USER);
 
         assertNotEquals(user1.hashCode(), user2.hashCode());
     }

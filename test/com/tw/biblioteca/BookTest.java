@@ -17,7 +17,7 @@ public class BookTest {
     public void shouldDisplayBookDetails() {
         Book book = new Book("Abc", "Def", 1900);
 
-        assertEquals("Abc                     Def                     1900                   \n", book.toString());
+        assertEquals("\nAbc                     Def                     1900                   ", book.toString());
     }
 
     @Test
