@@ -1,5 +1,7 @@
 package com.tw.biblioteca;
 
+//Session manages the user details for application
+
 public class Session {
 
     private User user;
@@ -10,5 +12,9 @@ public class Session {
 
     public User getUser() {
         return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
