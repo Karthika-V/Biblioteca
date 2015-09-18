@@ -13,7 +13,7 @@ public class Biblioteca {
         this.user = user;
     }
 
-    private void start() {
+    public void start() {
         consoleView.display("\nWelcome to Biblioteca\n");
         while (true) {
             run();
@@ -21,7 +21,7 @@ public class Biblioteca {
     }
 
     private void run() {
-        consoleView.menu(user);
+        consoleView.menu();
         menuOptions.optionHandler(consoleView.inputFromUser());
     }
 }
