@@ -26,11 +26,12 @@ public class ConsoleView {
         System.out.println(stringBuilder.toString());
     }
 
-    public void menu() {
+    public void menu(ArrayList menuOptions) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Hi User!!!\nYou have the following Options:\nChoose One\n");
-        MenuOptions menuOptions = new MenuOptions();
-        stringBuilder.append(menuOptions.toString());
+        for (int i = 0; i < menuOptions.size(); i++) {
+            stringBuilder.append(menuOptions.get(i) + "\n");
+        }
         System.out.println(stringBuilder.toString());
     }
 

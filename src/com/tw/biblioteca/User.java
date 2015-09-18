@@ -10,6 +10,10 @@ public class User {
     private String userPhone;
     private Role userRole;
 
+    public Role getRole() {
+        return userRole;
+    }
+
     public enum Role { USER, LIBRARIAN, GUEST};
 
     public User(String userLibraryNumber, String password, String userName, String userMail, String userPhone, Role userRole) {

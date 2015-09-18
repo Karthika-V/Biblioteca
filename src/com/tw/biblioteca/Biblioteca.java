@@ -6,11 +6,13 @@ public class Biblioteca {
     private ConsoleView consoleView;
     private MenuOptions menuOptions;
     private Session session;
+    private MenuFactory menuFactory;
 
-    public Biblioteca(ConsoleView consoleView, MenuOptions menuOptions, Session session) {
+    public Biblioteca(ConsoleView consoleView, MenuOptions menuOptions, Session session, MenuFactory menuFactory) {
         this.consoleView = consoleView;
         this.menuOptions = menuOptions;
         this.session = session;
+        this.menuFactory = menuFactory;
     }
 
     public void start() {
@@ -22,8 +24,7 @@ public class Biblioteca {
 
     private void run() {
         User user = session.getUser();
-
-        consoleView.menu();
+        consoleView.menu(menuFactory.getMenu(user.getRole()));
         menuOptions.optionHandler(consoleView.inputFromUser());
     }
 }

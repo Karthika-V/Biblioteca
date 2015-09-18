@@ -34,13 +34,9 @@ public class MenuOptions {
         } else if (option.contentEquals("q")) {
             System.exit(0);
         } else if (option.contentEquals("2")) {
-            consoleView.display("Please login to proceed for the selected menu item.");
-            User currentUser = login.loginOperation();
             consoleView.display("Enter the book name:");
             library.checkOutBook(in.nextLine());
         } else if (option.contentEquals("3")) {
-            consoleView.display("Please login to proceed for the selected menu item.");
-            User currentUser = login.loginOperation();
             consoleView.display("Enter the book name:");
             library.checkInBook(library.returnBook(in.nextLine()));
         } else if (option.contentEquals("4")) {
@@ -49,7 +45,7 @@ public class MenuOptions {
             consoleView.display("Enter the movie name:");
             library.checkOutMovie(in.nextLine());
         } else if (option.contentEquals("6")) {
-            User currentUser = login.loginOperation();
+            login.loginOperation();
         } else if (option.contentEquals("7")) {
             User currentUser = login.loginOperation();
             currentUser.displayUserDetails();
